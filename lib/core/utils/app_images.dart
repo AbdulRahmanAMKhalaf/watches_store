@@ -10,4 +10,12 @@ abstract class AppImages{
   static const String lottieLogin2='assets/images/login2.json';
   static const String lottiePhoneNumber='assets/images/number.json';
   static const String lottieMessageCode='assets/images/message.json';
+  static const String TH1='assets/icons/1.png';
+  static const String TH2='assets/icons/3.png';
+  static const String FO1='assets/icons/2.png';
+  static const String FO2='assets/icons/4.png';
+  static const String TH='assets/icons/TH.png';
+  static const String FO='assets/icons/FO.png';
+
+
 }
