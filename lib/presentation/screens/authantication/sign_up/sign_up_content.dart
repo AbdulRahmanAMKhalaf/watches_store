@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:watches_store/core/my_text_form_field_widget/my_text_form_field.dart';
 import 'package:watches_store/core/my_text_widget/my_text.dart';
-import 'package:watches_store/core/utils/images_app.dart';
+import 'package:watches_store/core/utils/app_colors.dart';
+import 'package:watches_store/core/utils/app_images.dart';
 import 'package:watches_store/presentation/screens/authantication/login/login_screen.dart';
 import 'package:watches_store/presentation/screens/authantication/otp/otp_screen.dart';
 
@@ -22,18 +23,11 @@ class SignUpContent extends StatelessWidget {
           key: formsKey,
           child: Stack(
             children: [
-              ClipPath(
-                clipper: MyClipper(),
-                child: Container(
-                  width: double.infinity,
-                  height: double.infinity,
-                  color: Colors.black.withOpacity(0.7),
-                ),
-              ),
+              Center(child: Image.asset('assets/icons/c2.png',color: AppColors.authImagesColor,)),
               ListView(
                 padding: EdgeInsets.all(3.w),
                 children: [
-                  Image.asset(ImagesApp.addUser,height:15.h,),
+                  Image.asset(AppImages.addUser,height:15.h,),
                   SizedBox(height: 6.h,),
                   Row(
                     children: [
@@ -58,7 +52,7 @@ class SignUpContent extends StatelessWidget {
                   ),
                   MyTextWidget(
                     data: 'Please enter your  name, email, password & phone number to sign up',
-                    color: Colors.grey.shade400,
+                    color: AppColors.myGreyColor,
                     fontWeight: FontWeight.w800,
                     size: 15,
                   ),
@@ -71,9 +65,9 @@ class SignUpContent extends StatelessWidget {
                     preIconColor: Colors.black,
                     labelData: 'Username',
                     labelBehavior: FloatingLabelBehavior.always,
-                    labelColor: Colors.cyan,
+                    labelColor: AppColors.mainColor,
                     hintData: 'enter your name',
-                    hintColor: Colors.grey.shade500,
+                    hintColor: AppColors.myGreyColor,
                   ),
                   SizedBox(height: 4.h,),
                   MyTextFormField(controller: emailController,
@@ -82,9 +76,9 @@ class SignUpContent extends StatelessWidget {
                     preIconColor: Colors.black,
                     labelData: 'Email Address',
                     labelBehavior: FloatingLabelBehavior.always,
-                    labelColor: Colors.cyan,
+                    labelColor: AppColors.mainColor,
                     hintData: 'enter your email address',
-                    hintColor: Colors.grey.shade500,
+                    hintColor: AppColors.myGreyColor,
                   ),
                   SizedBox(height: 4.h,),
                   MyTextFormField(controller: phoneNumberController,
@@ -104,9 +98,9 @@ class SignUpContent extends StatelessWidget {
                     preIconColor: Colors.black,
                     labelData: 'Password',
                     labelBehavior: FloatingLabelBehavior.always,
-                    labelColor: Colors.cyan,
+                    labelColor: AppColors.mainColor,
                     hintData: 'enter your password',
-                    hintColor: Colors.grey.shade500,
+                    hintColor: AppColors.myGreyColor,
                   ),
                   SizedBox(height: 4.h,),
                   MyTextFormField(controller: passwordController,
@@ -115,9 +109,9 @@ class SignUpContent extends StatelessWidget {
                     preIconColor: Colors.black,
                     labelData: 'Re_Type Password',
                     labelBehavior: FloatingLabelBehavior.always,
-                    labelColor: Colors.cyan,
+                    labelColor: AppColors.mainColor,
                     hintData: 'enter your password again',
-                    hintColor: Colors.grey.shade500,
+                    hintColor: AppColors.myGreyColor,
                     suffIcon: const Icon(Icons.remove_red_eye_outlined),
                     suffIconColor: Colors.black,
                   ),
@@ -149,9 +143,9 @@ class SignUpContent extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const MyTextWidget(
+                       MyTextWidget(
                         data: 'You have an account?',
-                        color: Colors.grey,
+                        color: AppColors.myGreyColor,
                         fontWeight: FontWeight.w600,
                         size: 15,
                       ),
@@ -166,9 +160,9 @@ class SignUpContent extends StatelessWidget {
                                 builder: (context) => const LoginScreen(),
                               ));
                         },
-                        child: const MyTextWidget(
+                        child:  MyTextWidget(
                           data: 'Login',
-                          color: Colors.cyan,
+                          color: AppColors.mainColor,
                           fontWeight: FontWeight.w800,
                           size: 16,
                         ),

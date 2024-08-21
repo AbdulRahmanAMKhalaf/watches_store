@@ -1,9 +1,11 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:watches_store/core/my_text_form_field_widget/my_text_form_field.dart';
 import 'package:watches_store/core/my_text_widget/my_text.dart';
-import 'package:watches_store/core/utils/images_app.dart';
+import 'package:watches_store/core/utils/app_colors.dart';
+import 'package:watches_store/core/utils/app_images.dart';
 import 'package:watches_store/presentation/screens/authantication/otp/otp_screen.dart';
 import 'package:watches_store/presentation/screens/authantication/sign_up/sign_up_screen.dart';
 
@@ -20,23 +22,16 @@ class LoginScreenContent extends StatelessWidget {
         key: formKey,
         child: Stack(
           children: [
-            ClipPath(
-              clipper: MyClipper(),
-              child: Container(
-                height: double.infinity,
-                width: double.infinity,
-                color: Colors.grey.shade300,
-              ),
-            ),
+            Center(child: Image.asset('assets/icons/c2.png',color:AppColors.authImagesColor,)),
             ListView(
               padding: EdgeInsets.all(3.w),
               children: [
                 Image.asset(
-                  ImagesApp.loginImage,
-                  height: 25.h,
+                  AppImages.loginImage,
+                  height: 23.h,
                 ),
                 SizedBox(
-                  height: 2.h,
+                  height: 4.h,
                 ),
                 Row(
                   children: [
@@ -61,7 +56,7 @@ class LoginScreenContent extends StatelessWidget {
                 ),
                 MyTextWidget(
                   data: 'Please enter email & password to log in',
-                  color: Colors.grey.shade400,
+                  color: AppColors.myGreyColor,
                   fontWeight: FontWeight.w800,
                   size: 15,
                 ),
@@ -72,11 +67,11 @@ class LoginScreenContent extends StatelessWidget {
                   controller: emailController,
                   inputType: TextInputType.emailAddress,
                   labelData: 'Email Address',
-                  labelColor: Colors.cyan,
+                  labelColor: AppColors.mainColor,
                   labelBehavior: FloatingLabelBehavior.always,
                   hintData: 'enter email address',
                   hintSize: 15.px,
-                  hintColor: Colors.grey.shade500,
+                  hintColor: AppColors.myGreyColor,
                   textAlign: TextAlign.start,
                   preIcon: const Icon(Icons.email),
                   preIconColor: Colors.black,
@@ -92,7 +87,7 @@ class LoginScreenContent extends StatelessWidget {
                     hintData: 'enter password',
                     hintColor: Colors.grey.shade500,
                     labelData: 'Password',
-                    labelColor: Colors.cyan,
+                    labelColor: AppColors.mainColor,
                     suffIcon: const Icon(Icons.remove_red_eye_outlined),
                     suffIconColor: Colors.black,
                     inputType: TextInputType.visiblePassword),
@@ -107,7 +102,7 @@ class LoginScreenContent extends StatelessWidget {
                     },
                     child: MyTextWidget(
                       data: 'Forget password?',
-                      color: Colors.grey,
+                      color: AppColors.myGreyColor,
                       size: 13.px,
                       fontWeight: FontWeight.w600,
                     ),
@@ -143,9 +138,9 @@ class LoginScreenContent extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const MyTextWidget(
+                     MyTextWidget(
                       data: 'You don\'t have account?',
-                      color: Colors.grey,
+                      color: AppColors.myGreyColor,
                       fontWeight: FontWeight.w600,
                       size: 15,
                     ),
@@ -160,9 +155,9 @@ class LoginScreenContent extends StatelessWidget {
                               builder: (context) => const SignUpScreen(),
                             ));
                       },
-                      child: const MyTextWidget(
+                      child:  MyTextWidget(
                         data: 'Sign up',
-                        color: Colors.cyan,
+                        color: AppColors.mainColor,
                         fontWeight: FontWeight.w800,
                         size: 16,
                       ),
@@ -178,18 +173,3 @@ class LoginScreenContent extends StatelessWidget {
   }
 }
 
-class MyClipper extends CustomClipper<Path>{
-  @override
-  Path getClip(Size size) {
-    Path path=Path();
-    path.lineTo(0, size.height);
-    path.quadraticBezierTo(size.width-100, size.height-230, size.width*.1, size.height*.2);
-    path.lineTo(size.width,0);
-    return path;
-  }
-
-  @override
-  bool shouldReclip(covariant CustomClipper<Path> oldClipper) {
-   return true;
-  }
-}

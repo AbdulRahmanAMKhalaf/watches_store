@@ -1,5 +1,5 @@
-abstract class ImagesApp{
-  static const String watches_box='assets/images/1.jpg';
+abstract class AppImages{
+  static const String watchesBox='assets/images/1.jpg';
   static const String handHeldWatch='assets/images/2.jpg';
   static const String clockWall='assets/images/3.jpg';
   static const String smile='assets/icons/smile.png';

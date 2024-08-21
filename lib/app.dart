@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
+import 'package:watches_store/presentation/screens/authantication/login/login_screen.dart';
 import 'package:watches_store/presentation/screens/welcome/welcome_screen.dart';
 
 class MyApp extends StatelessWidget {
@@ -32,7 +33,7 @@ class MyApp extends StatelessWidget {
             useMaterial3: true,
           ),
           debugShowCheckedModeBanner: false,
-          home: const WelcomeScreen(),
+          home: const LoginScreen(),
         );
       },
     );

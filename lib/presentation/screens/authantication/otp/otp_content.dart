@@ -3,7 +3,7 @@ import 'package:lottie/lottie.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:watches_store/core/my_text_form_field_widget/my_text_form_field.dart';
 import 'package:watches_store/core/my_text_widget/my_text.dart';
-import 'package:watches_store/core/utils/images_app.dart';
+import 'package:watches_store/core/utils/app_images.dart';
 
 class OtpContent extends StatelessWidget {
   const OtpContent({super.key});
@@ -34,7 +34,7 @@ class OtpContent extends StatelessWidget {
           ListView(
             padding: EdgeInsets.all(3.w),
             children: [
-              Lottie.asset(ImagesApp.lottiePhoneNumber,),
+              Lottie.asset(AppImages.lottiePhoneNumber,),
               SizedBox(height: 1.h,),
               const MyTextWidget(data: 'Enter your Phone number',
               color: Colors.black,
