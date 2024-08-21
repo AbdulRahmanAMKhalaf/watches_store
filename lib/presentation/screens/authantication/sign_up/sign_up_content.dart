@@ -6,7 +6,7 @@ import 'package:watches_store/core/my_text_widget/my_text.dart';
 import 'package:watches_store/core/utils/app_colors.dart';
 import 'package:watches_store/core/utils/app_images.dart';
 import 'package:watches_store/presentation/screens/authantication/login/login_screen.dart';
-import 'package:watches_store/presentation/screens/authantication/otp/otp_screen.dart';
+import 'package:watches_store/presentation/screens/authantication/verify_phone/verify_phone_screen.dart';
 
 class SignUpContent extends StatelessWidget {
   const SignUpContent({super.key});
@@ -23,7 +23,6 @@ class SignUpContent extends StatelessWidget {
           key: formsKey,
           child: Stack(
             children: [
-              Center(child: Image.asset('assets/icons/c2.png',color: AppColors.authImagesColor,)),
               ListView(
                 padding: EdgeInsets.all(3.w),
                 children: [
@@ -123,7 +122,7 @@ class SignUpContent extends StatelessWidget {
                       child: MaterialButton(
                         onPressed: () {
                           if (formsKey.currentState!.validate()) {
-                            Navigator.push(context, CupertinoPageRoute(builder: (context) => const OtpScreen(),));
+                            Navigator.push(context, CupertinoPageRoute(builder: (context) => const VerifyPhoneScreen(),));
                           }
                         },
                         color: Colors.black,

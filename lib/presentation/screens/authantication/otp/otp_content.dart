@@ -1,132 +1,86 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
+import 'package:pinput/pinput.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
-import 'package:watches_store/core/my_text_form_field_widget/my_text_form_field.dart';
 import 'package:watches_store/core/my_text_widget/my_text.dart';
-import 'package:watches_store/core/utils/app_images.dart';
+import 'package:watches_store/core/utils/app_colors.dart';
+import 'package:watches_store/presentation/screens/authantication/verify_phone/verify_phone_screen.dart';
+import 'package:watches_store/presentation/screens/home/main_home/main_home_screen.dart';
 
 class OtpContent extends StatelessWidget {
   const OtpContent({super.key});
 
   @override
   Widget build(BuildContext context) {
-    TextEditingController phoneNumberController=TextEditingController();
+    TextEditingController otpController=TextEditingController();
     return SafeArea(
-      child: Stack(
+      child: ListView(
+        padding: EdgeInsets.all(3.w),
         children: [
-          Container(
-            decoration: BoxDecoration(
-              gradient: LinearGradient(colors: [Colors.greenAccent.shade100.withOpacity(0.9),Colors.greenAccent.shade100.withOpacity(0.9),Colors.lightBlueAccent.shade100.withOpacity(0.5)])
-            ),
+          Lottie.asset('assets/images/number.json'),
+          SizedBox(height: 1.h,),
+          MyTextWidget(data: 'Please enter the OTP code that send to your phone number',
+          color: AppColors.myGreyColor,
+            size: 17.px,
+            fontWeight: FontWeight.w800,
+              heightText: 1.2,
+              align: TextAlign.center,
           ),
-     /*     ClipPath(
-            clipper: MyClipper3(),
-            child: Container(
-              color: Colors.black,
-            ),
-          ),*/
-          ClipPath(
-            clipper: MyClipper2(),
-            child: Container(
-              color: Colors.grey.shade200
-            ),
-          ),
-          ListView(
-            padding: EdgeInsets.all(3.w),
-            children: [
-              Lottie.asset(AppImages.lottiePhoneNumber,),
-              SizedBox(height: 1.h,),
-              const MyTextWidget(data: 'Enter your Phone number',
-              color: Colors.black,
+          SizedBox(height: 5.h,),
+          Pinput(
+            animationCurve: Curves.bounceInOut,
+            defaultPinTheme: PinTheme(
+              padding: EdgeInsets.all(5.w),
+              textStyle: TextStyle(
+                color: Colors.black,
                 fontWeight: FontWeight.w800,
-                size: 20,
-                align: TextAlign.center,
-
+                fontSize: 20.px
               ),
-              SizedBox(height: 1.h,),
-              MyTextWidget(data: 'We will send otp message to verify that is you',
-              fontWeight: FontWeight.w800,
-                  color: Colors.grey.shade500,
-                align: TextAlign.center,
+              decoration:  BoxDecoration(color: Colors.grey.shade200,
+                shape: BoxShape.circle
               ),
-              SizedBox(height: 3.h,),
-              MyTextFormField(controller: phoneNumberController,
-                  inputType: TextInputType.phone,
-              preIcon: const Icon(Icons.phone),
-                preIconColor: Colors.black,
-                hintData: '07########',
-                labelBehavior: FloatingLabelBehavior.always,
-                labelData: 'Phone Number',
-                labelColor: Colors.cyan,
-                maxLength: 10,
-              ),
-              SizedBox(height: 5.h,),
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 25.w),
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(20.px),
-                  child: MaterialButton(onPressed: (){},
-                    color: Colors.black,
-                    padding: EdgeInsets.all(5.w),
-                  child: const MyTextWidget(data: 'Send Code',
-                  color: Colors.white,
-                    size: 20,
-                    fontWeight: FontWeight.w800,
-                  ),
-                  ),
-                ),
-              ),
-            ],
+            ),
+            controller: otpController,
+            validator: (value) {
+              if(otpController.text.isEmpty){
+                return 'Required field';
+              }
+              else{
+                return null;
+              }
+            },
           ),
+          SizedBox(height: 5.h,),
+          GestureDetector(
+            onTap: () {
+              Navigator.pushAndRemoveUntil(context,
+                  CupertinoPageRoute(builder: (context) => const MainHomeScreen(),),
+                  (route) => false,);
+            },
+            child: MyTextWidget(data: 'Resend Code',
+              fontWeight: FontWeight.w800,
+              color: AppColors.mainColor,
+              align: TextAlign.center,
+              size: 17.px,
+            ),
+          ),
+          SizedBox(height: 3.h,),
+          GestureDetector(
+            onTap: () {
+              Navigator.pushAndRemoveUntil(context,
+                  CupertinoPageRoute(builder: (context) => const VerifyPhoneScreen(),)
+                  , (route) => false,);
+            },
+            child: MyTextWidget(data: 'Change Phonenumber',
+              size: 15.px,
+              color: Colors.black,
+              fontWeight: FontWeight.w800,
+              align: TextAlign.center,
+            ),
+          )
         ],
       ),
     );
   }
 }
-
-class MyClipper2 extends CustomClipper<Path>{
-  @override
-  Path getClip(Size size) {
-    Path path=Path();
-    path.lineTo(0,size.height);
-    path.lineTo(size.width, size.height*.5+40);
-    return path;
-  }
-
-  @override
-  bool shouldReclip(covariant CustomClipper<Path> oldClipper) {
-   return true;
-  }
-}
-/*
-class MyClipper3 extends CustomClipper<Path>{
-  @override
-  Path getClip(Size size) {
-    Path path=Path();
-    path.lineTo(size.width*.5,size.height*.5);
-    path.quadraticBezierTo(size.width*.5-200.px, size.height*.5-200, 0, 0);
-    path.lineTo(size.width, 0);
-    return path;
-  }
-
-  @override
-  bool shouldReclip(covariant CustomClipper<Path> oldClipper) {
-    return true;
-  }
-}
-*/
-/*class MyClipper4 extends CustomClipper<Path>{
-  @override
-  Path getClip(Size size) {
-    Path path=Path();
-    path.lineTo(size.width,0);
-    path.lineTo(size.width*.5, size.height*.5);
-    path.lineTo(size.width, size.height);
-    return path;
-  }
-
-  @override
-  bool shouldReclip(covariant CustomClipper<Path> oldClipper) {
-    return true;
-  }
-}*/

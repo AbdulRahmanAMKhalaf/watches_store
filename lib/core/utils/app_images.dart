@@ -9,5 +9,5 @@ abstract class AppImages{
   static const String lottieLogin1='assets/images/login.json';
   static const String lottieLogin2='assets/images/login2.json';
   static const String lottiePhoneNumber='assets/images/number.json';
-  static const String lottieOtpCode='assets/images/otpCode.json';
+  static const String lottieMessageCode='assets/images/message.json';
 }

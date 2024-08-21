@@ -1,25 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:watches_store/core/my_text_widget/my_text.dart';
-import 'package:watches_store/presentation/screens/authantication/otp/otp_content.dart';
+import 'package:watches_store/presentation/screens/authantication/verify_phone/verify_phone_content.dart';
 
-class OtpScreen extends StatelessWidget {
-  const OtpScreen({super.key});
+class VerifyPhoneScreen extends StatelessWidget {
+  const VerifyPhoneScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
       appBar: AppBar(
         title: MyTextWidget(
-          data: 'OTP Verification',
-          color: Colors.black,
-          size: 25.px,
+          data: 'It\'s You',
           fontWeight: FontWeight.w800,
+          size: 25.px,
+            align: TextAlign.center,
+          color: Colors.black,
         ),
         centerTitle: true,
-       automaticallyImplyLeading: false,
       ),
-      body: const OtpContent(),
+      body: const VerifyPhoneContent(),
     );
   }
 }

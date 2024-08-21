@@ -1,13 +1,12 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:watches_store/core/my_text_form_field_widget/my_text_form_field.dart';
 import 'package:watches_store/core/my_text_widget/my_text.dart';
 import 'package:watches_store/core/utils/app_colors.dart';
 import 'package:watches_store/core/utils/app_images.dart';
-import 'package:watches_store/presentation/screens/authantication/otp/otp_screen.dart';
 import 'package:watches_store/presentation/screens/authantication/sign_up/sign_up_screen.dart';
+import 'package:watches_store/presentation/screens/authantication/verify_phone/verify_phone_screen.dart';
 
 class LoginScreenContent extends StatelessWidget {
   const LoginScreenContent({super.key});
@@ -22,7 +21,6 @@ class LoginScreenContent extends StatelessWidget {
         key: formKey,
         child: Stack(
           children: [
-            Center(child: Image.asset('assets/icons/c2.png',color:AppColors.authImagesColor,)),
             ListView(
               padding: EdgeInsets.all(3.w),
               children: [
@@ -98,7 +96,7 @@ class LoginScreenContent extends StatelessWidget {
                   alignment: Alignment.centerRight,
                   child: GestureDetector(
                     onTap: () {
-                      Navigator.push(context, CupertinoPageRoute(builder: (context) => const OtpScreen(),));
+                      Navigator.push(context, CupertinoPageRoute(builder: (context) => const VerifyPhoneScreen(),));
                     },
                     child: MyTextWidget(
                       data: 'Forget password?',
