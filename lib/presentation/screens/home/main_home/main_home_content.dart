@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:watches_store/core/my_text_widget/my_text.dart';
 import 'package:watches_store/core/utils/app_colors.dart';
+import 'package:watches_store/presentation/screens/home/details/details_view.dart';
 import 'package:watches_store/presentation/screens/home/main_home/main_home_model.dart';
 
 class MainHomeContent extends StatelessWidget {
@@ -30,66 +31,73 @@ class MainHomeContent extends StatelessWidget {
         CarouselSlider(
             items: List.generate(mainHomeList.length,
                   (index) {
-                return Stack(
-                  children: [
-                    ClipPath(
-                      clipper: MyClipper(),
-                      child: Container(
-                        height: 26.h,
-                        width: double.infinity,
-                        decoration: BoxDecoration(
-                          color: AppColors.mainColor,
-                          borderRadius: BorderRadius.circular(15.px),
+                return GestureDetector(
+                  onTap: () {
+                    Navigator.push(context,
+                        CupertinoPageRoute(builder: (context) =>  DetailsView(index: index,),),
+                    );
+                  },
+                  child: Stack(
+                    children: [
+                      ClipPath(
+                        clipper: MyClipper5(),
+                        child: Container(
+                          height: 26.h,
+                          width: double.infinity,
+                          decoration: BoxDecoration(
+                            color: AppColors.mainColor,
+                            borderRadius: BorderRadius.circular(15.px),
+                          ),
                         ),
                       ),
-                    ),
-                    Container(
-                      width: double.infinity,
-                      padding: EdgeInsets.all(3.w),
-                      decoration: BoxDecoration(
-                          color: AppColors.authImagesColor,
-                          borderRadius: BorderRadius.circular(15.px)
-                      ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                         Expanded(
-                           child: Column(
-                             crossAxisAlignment:  CrossAxisAlignment.start,
-                             children: [
-                               Image.asset(mainHomeList[index].logo,height: 4.h,),
-                               SizedBox(height: 2.h,),
-                               MyTextWidget(data: mainHomeList[index].name,
-                               heightText: 1.2,
-                                 fontWeight: FontWeight.w600,
-                                 maxLines: 2,
-                                 color: Colors.black,
-                               ),
-                               SizedBox(height: 2.h,),
-                               MyTextWidget(data: mainHomeList[index].model,
+                      Container(
+                        width: double.infinity,
+                        padding: EdgeInsets.all(3.w),
+                        decoration: BoxDecoration(
+                            color: AppColors.authImagesColor,
+                            borderRadius: BorderRadius.circular(15.px)
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                           Expanded(
+                             child: Column(
+                               crossAxisAlignment:  CrossAxisAlignment.start,
+                               children: [
+                                 Image.asset(mainHomeList[index].logo,height: 4.h,),
+                                 SizedBox(height: 2.h,),
+                                 MyTextWidget(data: mainHomeList[index].name,
                                  heightText: 1.2,
-                                 fontWeight: FontWeight.w800,
-                                 maxLines: 2,
-                                 size: 20.px,
-                                 color: AppColors.mainColor,
-                               ),
-                               const Spacer(),
-                               MyTextWidget(
-                                 data: mainHomeList[index].price,
-                                 align: TextAlign.start,
-                                 color: Colors.black,
-                                 fontWeight: FontWeight.w800,
-                                 size: 17.px,
-                               ),
-                             ],
+                                   fontWeight: FontWeight.w600,
+                                   maxLines: 2,
+                                   color: Colors.black,
+                                 ),
+                                 SizedBox(height: 2.h,),
+                                 MyTextWidget(data: mainHomeList[index].model,
+                                   heightText: 1.2,
+                                   fontWeight: FontWeight.w800,
+                                   maxLines: 2,
+                                   size: 20.px,
+                                   color: AppColors.mainColor,
+                                 ),
+                                 const Spacer(),
+                                 MyTextWidget(
+                                   data: mainHomeList[index].price,
+                                   align: TextAlign.start,
+                                   color: Colors.black,
+                                   fontWeight: FontWeight.w800,
+                                   size: 17.px,
+                                 ),
+                               ],
+                             ),
                            ),
-                         ),
-                          SizedBox(width: 2.w,),
-                          Expanded(child: Image.asset(mainHomeList[index].image))
-                        ],
+                            SizedBox(width: 2.w,),
+                            Expanded(child: Image.asset(mainHomeList[index].image))
+                          ],
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 );
               },),
             options: CarouselOptions(
@@ -125,66 +133,73 @@ class MainHomeContent extends StatelessWidget {
             ),
           children: List.generate(
               mainHomeList.length,
-              (index) => Stack(
-                children: [
-                  ClipPath(
-                    clipper: MyClipper(),
-                    child: Container(
-                      height: 26.h,
-                      width: double.infinity,
-                      decoration: BoxDecoration(
-                        color: AppColors.mainColor,
-                        borderRadius: BorderRadius.circular(15.px),
+              (index) => GestureDetector(
+                onTap: () {
+                  Navigator.push(context,
+                    CupertinoPageRoute(builder: (context) =>  DetailsView(index: index,),),
+                  );
+                },
+                child: Stack(
+                  children: [
+                    ClipPath(
+                      clipper: MyClipper5(),
+                      child: Container(
+                        height: 26.h,
+                        width: double.infinity,
+                        decoration: BoxDecoration(
+                          color: AppColors.mainColor,
+                          borderRadius: BorderRadius.circular(15.px),
+                        ),
                       ),
                     ),
-                  ),
-                  Container(
-                    width: double.infinity,
-                    padding: EdgeInsets.all(3.w),
-                    decoration: BoxDecoration(
-                        color: AppColors.authImagesColor,
-                        borderRadius: BorderRadius.circular(15.px)
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Expanded(
-                          child: Column(
-                            crossAxisAlignment:  CrossAxisAlignment.start,
-                            children: [
-                              Image.asset(mainHomeList[index].logo,height: 4.h,),
-                              SizedBox(height: 2.h,),
-                              MyTextWidget(data: mainHomeList[index].name,
-                                heightText: 1.2,
-                                fontWeight: FontWeight.w600,
-                                maxLines: 2,
-                                color: Colors.black,
-                              ),
-                              SizedBox(height: 2.h,),
-                              MyTextWidget(data: mainHomeList[index].model,
-                                heightText: 1.2,
-                                fontWeight: FontWeight.w800,
-                                maxLines: 2,
-                                size: 20.px,
-                                color: AppColors.mainColor,
-                              ),
-                              const Spacer(),
-                              MyTextWidget(
-                                data: mainHomeList[index].price,
-                                align: TextAlign.start,
-                                color: Colors.black,
-                                fontWeight: FontWeight.w800,
-                                size: 17.px,
-                              ),
-                            ],
+                    Container(
+                      width: double.infinity,
+                      padding: EdgeInsets.all(3.w),
+                      decoration: BoxDecoration(
+                          color: AppColors.authImagesColor,
+                          borderRadius: BorderRadius.circular(15.px)
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Expanded(
+                            child: Column(
+                              crossAxisAlignment:  CrossAxisAlignment.start,
+                              children: [
+                                Image.asset(mainHomeList[index].logo,height: 4.h,),
+                                SizedBox(height: 2.h,),
+                                MyTextWidget(data: mainHomeList[index].name,
+                                  heightText: 1.2,
+                                  fontWeight: FontWeight.w600,
+                                  maxLines: 2,
+                                  color: Colors.black,
+                                ),
+                                SizedBox(height: 2.h,),
+                                MyTextWidget(data: mainHomeList[index].model,
+                                  heightText: 1.2,
+                                  fontWeight: FontWeight.w800,
+                                  maxLines: 2,
+                                  size: 20.px,
+                                  color: AppColors.mainColor,
+                                ),
+                                const Spacer(),
+                                MyTextWidget(
+                                  data: mainHomeList[index].price,
+                                  align: TextAlign.start,
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.w800,
+                                  size: 17.px,
+                                ),
+                              ],
+                            ),
                           ),
-                        ),
-                        SizedBox(width: 2.w,),
-                        Expanded(child: Image.asset(mainHomeList[index].image))
-                      ],
+                          SizedBox(width: 2.w,),
+                          Expanded(child: Image.asset(mainHomeList[index].image))
+                        ],
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               )
             ,),
         ),
@@ -197,7 +212,7 @@ class MainHomeContent extends StatelessWidget {
     );
   }
 }
-class MyClipper extends CustomClipper<Path>{
+class MyClipper5 extends CustomClipper<Path>{
   @override
   Path getClip(Size size) {
     Path path=Path();

@@ -7,6 +7,7 @@ import 'package:watches_store/core/utils/app_colors.dart';
 import 'package:watches_store/core/utils/app_images.dart';
 import 'package:watches_store/presentation/screens/authantication/sign_up/sign_up_screen.dart';
 import 'package:watches_store/presentation/screens/authantication/verify_phone/verify_phone_screen.dart';
+import 'package:watches_store/presentation/screens/home/main_home/main_home_screen.dart';
 
 class LoginScreenContent extends StatelessWidget {
   const LoginScreenContent({super.key});
@@ -16,158 +17,193 @@ class LoginScreenContent extends StatelessWidget {
     TextEditingController emailController = TextEditingController();
     TextEditingController passwordController = TextEditingController();
     var formKey = GlobalKey<FormState>();
-    return SafeArea(
-      child: Form(
-        key: formKey,
-        child: Stack(
-          children: [
-            ListView(
-              padding: EdgeInsets.all(3.w),
+    return Stack(
+      children: [
+        ClipPath(
+          clipper: Clipper1(),
+          child: Container(
+            height: double.infinity,
+            width: double.infinity,
+            color: Colors.lightBlueAccent.shade100.withOpacity(0.4),
+          ),
+        ),
+        SafeArea(
+          child: Form(
+            key: formKey,
+            child: Stack(
               children: [
-                Image.asset(
-                  AppImages.loginImage,
-                  height: 23.h,
-                ),
-                SizedBox(
-                  height: 4.h,
-                ),
-                Row(
+                ListView(
+                  padding: EdgeInsets.all(3.w),
                   children: [
-                    const MyTextWidget(
-                      data: 'Hi, Let\'s Login',
-                      color: Colors.black,
-                      fontWeight: FontWeight.w800,
-                      size: 30,
+                    Image.asset(
+                      AppImages.loginImage,
+                      height: 23.h,
                     ),
                     SizedBox(
-                      width: 1.w,
+                      height: 4.h,
                     ),
-                    Image.asset(
-                      'assets/icons/smile.png',
-                      height: 7.w,
-                      color: Colors.cyan,
-                    )
-                  ],
-                ),
-                SizedBox(
-                  height: 1.h,
-                ),
-                MyTextWidget(
-                  data: 'Please enter email & password to log in',
-                  color: AppColors.myGreyColor,
-                  fontWeight: FontWeight.w800,
-                  size: 15,
-                ),
-                SizedBox(
-                  height: 3.h,
-                ),
-                MyTextFormField(
-                  controller: emailController,
-                  inputType: TextInputType.emailAddress,
-                  labelData: 'Email Address',
-                  labelColor: AppColors.mainColor,
-                  labelBehavior: FloatingLabelBehavior.always,
-                  hintData: 'enter email address',
-                  hintSize: 15.px,
-                  hintColor: AppColors.myGreyColor,
-                  textAlign: TextAlign.start,
-                  preIcon: const Icon(Icons.email),
-                  preIconColor: Colors.black,
-                ),
-                SizedBox(
-                  height: 4.h,
-                ),
-                MyTextFormField(
-                    controller: passwordController,
-                    preIcon: const Icon(Icons.key),
-                    preIconColor: Colors.black,
-                    labelBehavior: FloatingLabelBehavior.always,
-                    hintData: 'enter password',
-                    hintColor: Colors.grey.shade500,
-                    labelData: 'Password',
-                    labelColor: AppColors.mainColor,
-                    suffIcon: const Icon(Icons.remove_red_eye_outlined),
-                    suffIconColor: Colors.black,
-                    inputType: TextInputType.visiblePassword),
-                SizedBox(
-                  height: 2.h,
-                ),
-                Align(
-                  alignment: Alignment.centerRight,
-                  child: GestureDetector(
-                    onTap: () {
-                      Navigator.push(context, CupertinoPageRoute(builder: (context) => const VerifyPhoneScreen(),));
-                    },
-                    child: MyTextWidget(
-                      data: 'Forget password?',
+                    Row(
+                      children: [
+                        const MyTextWidget(
+                          data: 'Hi, Let\'s Login',
+                          color: Colors.black,
+                          fontWeight: FontWeight.w800,
+                          size: 30,
+                        ),
+                        SizedBox(
+                          width: 1.w,
+                        ),
+                        Image.asset(
+                          'assets/icons/smile.png',
+                          height: 7.w,
+                          color: Colors.cyan,
+                        )
+                      ],
+                    ),
+                    SizedBox(
+                      height: 1.h,
+                    ),
+                    MyTextWidget(
+                      data: 'Please enter email & password to log in',
                       color: AppColors.myGreyColor,
-                      size: 13.px,
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
-                ),
-                SizedBox(
-                  height: 2.h,
-                ),
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 25.w),
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(20.px),
-                    child: MaterialButton(
-                      onPressed: () {
-                        if (formKey.currentState!.validate()) {
-                          /*Navigator.push(context, route);*/
-                        }
-                      },
-                      color: Colors.black,
-                      padding: EdgeInsets.all(3.w),
-                      child: const MyTextWidget(
-                        data: 'Login',
-                        fontWeight: FontWeight.w600,
-                        size: 25,
-                        color: Colors.white,
-                      ),
-                    ),
-                  ),
-                ),
-                SizedBox(
-                  height: 3.h,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                     MyTextWidget(
-                      data: 'You don\'t have account?',
-                      color: AppColors.myGreyColor,
-                      fontWeight: FontWeight.w600,
+                      fontWeight: FontWeight.w800,
                       size: 15,
                     ),
                     SizedBox(
-                      width: 2.w,
+                      height: 3.h,
                     ),
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                            context,
-                            CupertinoPageRoute(
-                              builder: (context) => const SignUpScreen(),
-                            ));
-                      },
-                      child:  MyTextWidget(
-                        data: 'Sign up',
-                        color: AppColors.mainColor,
-                        fontWeight: FontWeight.w800,
-                        size: 16,
+                    MyTextFormField(
+                      controller: emailController,
+                      inputType: TextInputType.emailAddress,
+                      labelData: 'Email Address',
+                      labelColor: AppColors.mainColor,
+                      labelBehavior: FloatingLabelBehavior.always,
+                      hintData: 'enter email address',
+                      hintSize: 15.px,
+                      hintColor: AppColors.myGreyColor,
+                      textAlign: TextAlign.start,
+                      preIcon: const Icon(Icons.email),
+                      preIconColor: Colors.black,
+                    ),
+                    SizedBox(
+                      height: 4.h,
+                    ),
+                    MyTextFormField(
+                        controller: passwordController,
+                        preIcon: const Icon(Icons.key),
+                        preIconColor: Colors.black,
+                        labelBehavior: FloatingLabelBehavior.always,
+                        hintData: 'enter password',
+                        hintColor: Colors.grey.shade500,
+                        labelData: 'Password',
+                        labelColor: AppColors.mainColor,
+                        suffIcon: const Icon(Icons.remove_red_eye_outlined),
+                        suffIconColor: Colors.black,
+                        inputType: TextInputType.visiblePassword),
+                    SizedBox(
+                      height: 2.h,
+                    ),
+                    Align(
+                      alignment: Alignment.centerRight,
+                      child: GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              CupertinoPageRoute(
+                                builder: (context) => const VerifyPhoneScreen(),
+                              ));
+                        },
+                        child: MyTextWidget(
+                          data: 'Forget password?',
+                          color: AppColors.myGreyColor,
+                          size: 13.px,
+                          fontWeight: FontWeight.w600,
+                        ),
                       ),
+                    ),
+                    SizedBox(
+                      height: 2.h,
+                    ),
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 25.w),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(20.px),
+                        child: MaterialButton(
+                          onPressed: () {
+                            Navigator.pushAndRemoveUntil(
+                              context,
+                              CupertinoPageRoute(
+                                builder: (context) => const MainHomeScreen(),
+                              ),
+                              (route) => false,
+                            );
+                          },
+                          color: Colors.black,
+                          padding: EdgeInsets.all(3.w),
+                          child: const MyTextWidget(
+                            data: 'Login',
+                            fontWeight: FontWeight.w600,
+                            size: 25,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 3.h,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        MyTextWidget(
+                          data: 'You don\'t have account?',
+                          color: AppColors.myGreyColor,
+                          fontWeight: FontWeight.w600,
+                          size: 15,
+                        ),
+                        SizedBox(
+                          width: 2.w,
+                        ),
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                CupertinoPageRoute(
+                                  builder: (context) => const SignUpScreen(),
+                                ));
+                          },
+                          child: MyTextWidget(
+                            data: 'Sign up',
+                            color: AppColors.mainColor,
+                            fontWeight: FontWeight.w800,
+                            size: 16,
+                          ),
+                        ),
+                      ],
                     ),
                   ],
                 ),
               ],
             ),
-          ],
+          ),
         ),
-      ),
+      ],
     );
   }
 }
 
+class Clipper1 extends CustomClipper<Path> {
+  @override
+  Path getClip(Size size) {
+    Path path = Path();
+    path.lineTo(size.width, 0);
+    path.quadraticBezierTo(size.width - 20.w, 50.h, size.width - 40.w, 30.h);
+    path.lineTo(0, size.height);
+    return path;
+  }
+
+  @override
+  bool shouldReclip(covariant CustomClipper<Path> oldClipper) {
+    return true;
+  }
+}
